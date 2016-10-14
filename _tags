@@ -1,0 +1,90 @@
+<**/*.ml{,i}>: warn(-40), no_alias_deps
+<**/*>: thread
+# This prevents the implicit addition of -ppx options by ocamlfind
+<**/*>: predicate(custom_ppx)
+<src/*.ml>: for-pack(Core_bench)
+<inline-benchmarks/*.ml>: for-pack(Inline_benchmarks)
+<inline-benchmarks/*.ml{,i}>: pp(ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop)
+<src/*.ml{,i}>: pp(ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop)
+# OASIS_START
+# DO NOT EDIT (digest: 3c60042f5a181b064ed54c47f6c5551b)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library core_bench
+"src/core_bench.cmxs": use_core_bench
+"src/analysis.cmx": for-pack(Core_bench)
+"src/analysis_config.cmx": for-pack(Core_bench)
+"src/analysis_result.cmx": for-pack(Core_bench)
+"src/bench.cmx": for-pack(Core_bench)
+"src/bench_command.cmx": for-pack(Core_bench)
+"src/bench_command_column.cmx": for-pack(Core_bench)
+"src/bench_result.cmx": for-pack(Core_bench)
+"src/benchmark.cmx": for-pack(Core_bench)
+"src/defaults.cmx": for-pack(Core_bench)
+"src/display.cmx": for-pack(Core_bench)
+"src/display_column.cmx": for-pack(Core_bench)
+"src/display_config.cmx": for-pack(Core_bench)
+"src/display_units.cmx": for-pack(Core_bench)
+"src/linear_algebra.cmx": for-pack(Core_bench)
+"src/linear_algebra_wrapper.cmx": for-pack(Core_bench)
+"src/measurement.cmx": for-pack(Core_bench)
+"src/measurement_sample.cmx": for-pack(Core_bench)
+"src/partial_array.cmx": for-pack(Core_bench)
+"src/run_config.cmx": for-pack(Core_bench)
+"src/std.cmx": for-pack(Core_bench)
+"src/test.cmx": for-pack(Core_bench)
+"src/to_string.cmx": for-pack(Core_bench)
+"src/variable.cmx": for-pack(Core_bench)
+"src/verbosity.cmx": for-pack(Core_bench)
+<src/core_bench.{cma,cmxa}>: use_libcore_bench_stubs
+<src/*.ml{,i,y}>: package(bin_prot)
+<src/*.ml{,i,y}>: package(core)
+<src/*.ml{,i,y}>: package(fieldslib)
+<src/*.ml{,i,y}>: package(ppx_assert.runtime-lib)
+<src/*.ml{,i,y}>: package(ppx_bench.runtime-lib)
+<src/*.ml{,i,y}>: package(ppx_expect.collector)
+<src/*.ml{,i,y}>: package(ppx_inline_test.runtime-lib)
+<src/*.ml{,i,y}>: package(sexplib)
+<src/*.ml{,i,y}>: package(textutils)
+<src/*.ml{,i,y}>: package(typerep)
+<src/*.ml{,i,y}>: package(variantslib)
+"src/rdtsc_stubs.c": package(bin_prot)
+"src/rdtsc_stubs.c": package(core)
+"src/rdtsc_stubs.c": package(fieldslib)
+"src/rdtsc_stubs.c": package(ppx_assert.runtime-lib)
+"src/rdtsc_stubs.c": package(ppx_bench.runtime-lib)
+"src/rdtsc_stubs.c": package(ppx_expect.collector)
+"src/rdtsc_stubs.c": package(ppx_inline_test.runtime-lib)
+"src/rdtsc_stubs.c": package(sexplib)
+"src/rdtsc_stubs.c": package(textutils)
+"src/rdtsc_stubs.c": package(typerep)
+"src/rdtsc_stubs.c": package(variantslib)
+# Library inline_benchmarks
+"inline-benchmarks/inline_benchmarks.cmxs": use_inline_benchmarks
+"inline-benchmarks/runner.cmx": for-pack(Inline_benchmarks)
+<inline-benchmarks/*.ml{,i,y}>: package(bin_prot)
+<inline-benchmarks/*.ml{,i,y}>: package(core)
+<inline-benchmarks/*.ml{,i,y}>: package(core_extended)
+<inline-benchmarks/*.ml{,i,y}>: package(fieldslib)
+<inline-benchmarks/*.ml{,i,y}>: package(ppx_assert.runtime-lib)
+<inline-benchmarks/*.ml{,i,y}>: package(ppx_bench.runtime-lib)
+<inline-benchmarks/*.ml{,i,y}>: package(ppx_expect.collector)
+<inline-benchmarks/*.ml{,i,y}>: package(ppx_inline_test.runtime-lib)
+<inline-benchmarks/*.ml{,i,y}>: package(sexplib)
+<inline-benchmarks/*.ml{,i,y}>: package(textutils)
+<inline-benchmarks/*.ml{,i,y}>: package(typerep)
+<inline-benchmarks/*.ml{,i,y}>: package(variantslib)
+<inline-benchmarks/*.ml{,i,y}>: use_core_bench
+# OASIS_STOP
